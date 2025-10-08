@@ -8,6 +8,13 @@ This configuration is the result of a journey to connect a classic Deutsche Post
 
 ## Configuration
 
+First, enter privileged EXEC mode and then configuration mode:
+```cisco
+enable
+configure terminal
+```
+
+Then enter the following configuration:
 ```cisco
 version 15.7
 !
@@ -41,6 +48,11 @@ sip-ua
  registrar ipv4:<FREEPBX_IP>:5060
 !
 end
+```
+
+After entering the configuration, save it to startup-config:
+```cisco
+write memory
 ```
 
 ## Configuration Guide
