@@ -98,6 +98,22 @@ The phone originally comes with an AS4 connector and four wires:
 2. The configuration assumes DHCP for IP addressing. If you need a static IP, modify the FastEthernet0/0 interface configuration accordingly.
 3. The second Ethernet port (FastEthernet0/1) is disabled by default.
 
+## Special Networking Considerations
+
+### MikroTik RouterOS and NAT Configuration
+
+If you're using a MikroTik router with RouterOS and your setup includes:
+- FreePBX and Cisco VG202XM on different subnets
+- dst-nat (Destination NAT) configuration
+
+You need to disable the built-in SIP helper in RouterOS to prevent SIP connection issues. Execute this command on your MikroTik router:
+
+```
+/ip firewall service-port set sip disabled=yes
+```
+
+This is necessary because the RouterOS SIP helper can interfere with the SIP communication between the FreePBX and the Cisco VG202XM when they're on different subnets. The SIP helper tries to be helpful but can actually break the connection in this specific setup.
+
 ## Features
 
 - Minimal working configuration
